@@ -1,4 +1,4 @@
-﻿using System.Runtime;
+using System.Runtime;
 using System.Runtime.CompilerServices;
 
 
@@ -6,24 +6,39 @@ class Program
 {
    static void Main(string[] args)
    {
+     //membuat variabel laptop1 dan laptop2 bertipe data Laptop
      Laptop laptop1 = new Vivobook();
+     laptop1.vga = new nvidia();
+     laptop1.processor = new corei5();
+      
      Laptop laptop2 = new Ideapad();
+     laptop2.vga = new amd();
+     laptop2.processor = new ryzen();
+      
+     //membuat variabel predator bertipe data Predator
      Predator predator = new Predator();
 
+     //memanggil method
      laptop2.LaptopDinyalakan();
      laptop2.LaptopDimatikan();
+     predator.BermainGame();
 
-    // code dibawah akan error karena method ngoding 
+     // code dibawah akan error karena method ngoding() merupakan method dari child class Laptop bukan dari parent class
      laptop1.Ngoding();
+      
+     //untuk memanggil nya tanpa terjadi error maka bisa menggunakan code dibawah
+     //class yg awal diganti sama nama class baru, sehingga bisa akses method yg didalam nama class baru yang telah dibuat
      //((Vivobook)laptop1).Ngoding();
-      ACER acer = new Predator();
-      acer.BermainGame(); //code disamping jika dijalankan akan error karena memanggil parent class 
-
+     ACER acer = new Predator();
+     acer.BermainGame(); //code disamping jika dijalankan akan error karena parent class tidak memiliki method tsb
+     
+     //membuat spesifikasi laptop 1 
+     Console.WriteLine("Spesifikasi laptop1 : merk vga " + laptop1.vga + " merk processor " + laptop1.processor);
 
    }
 }
 
-
+//membuat parent class processor
 class Processor
 {
     public string merk;
@@ -31,6 +46,7 @@ class Processor
 
 }
 
+//membuat child class Intel
 class Intel : Processor
 {
     public Intel()
@@ -40,6 +56,7 @@ class Intel : Processor
     }
 }
 
+//membuat child class AMD dengan parent class Processor
 class AMD : Processor
 {
     public AMD()
@@ -48,6 +65,7 @@ class AMD : Processor
     }
 }
 
+//membuat child class di dalam child class dengan parent class Intel
 class corei3 : Intel 
 {
     public corei3()
@@ -56,6 +74,7 @@ class corei3 : Intel
     }
 }
 
+//membuat child class di dalam child class dengan parent class Intel
 class corei5 : Intel
 {
     public corei5()
@@ -64,6 +83,7 @@ class corei5 : Intel
     }
 }
 
+//membuat child class di dalam child class dengan parent class Intel
 class corei7 : Intel
 {
     public corei7()
@@ -72,6 +92,7 @@ class corei7 : Intel
     }
 }
 
+//membuat child class di dalam child class dengan parent class AMD
 class ryzen : AMD
 {
     public ryzen()
@@ -80,6 +101,7 @@ class ryzen : AMD
     }
 }
 
+//membuat child class di dalam child class dengan parent class AMD
 class athlon : AMD
 {
     public athlon()
@@ -88,11 +110,13 @@ class athlon : AMD
     }
 }
 
+//membuat parent class VGA
 class VGA
 {
     public string merk;
 }
 
+//membuat child class dengan parent class VGA
 class nvidia : VGA
 {
     public nvidia()
@@ -101,6 +125,7 @@ class nvidia : VGA
     }
 }
 
+//membuat child class dengan parent class VGA
 class amd : VGA
 {
     public amd()
@@ -109,6 +134,7 @@ class amd : VGA
     }
 }
 
+//membuat parent class Laptop
 class Laptop
 {
     public string merk;
@@ -128,6 +154,7 @@ class Laptop
     }
 }
 
+//membuat child class dengan parent class Laptop
 class ASUS : Laptop
 {
     public ASUS()
@@ -136,6 +163,7 @@ class ASUS : Laptop
     }
 }
 
+//membuat child class dengan parent class Laptop
 class ACER : Laptop
 {
     public ACER()
@@ -144,6 +172,7 @@ class ACER : Laptop
     }
 }
 
+//membuat child class dengan parent class Laptop
 class lenovo : Laptop
 {
     public lenovo()
@@ -152,6 +181,7 @@ class lenovo : Laptop
     }
 }
 
+//membuat child class di dalam child class dengan parent class ASUS
 class ROG : ASUS
 {
     public ROG()
@@ -160,6 +190,7 @@ class ROG : ASUS
     }
 }
 
+//membuat child class di dalam child class dengan parent class ASUS
 class Vivobook : ASUS
 {
     public Vivobook()
@@ -173,14 +204,16 @@ class Vivobook : ASUS
     }
 }
 
-class swift : ACER
+//membuat child class di dalam child class dengan parent class ACER
+class Swift : ACER
 {
-    public swift()
+    public Swift()
     {
         base.tipe = "Swift";
     }
 }
 
+//membuat child class di dalam child class dengan parent class ACER
 class Predator : ACER
 {
     public Predator()
@@ -194,6 +227,7 @@ class Predator : ACER
     }
 }
 
+//membuat child class di dalam child class dengan parent class lenovo
 class Ideapad : lenovo
 {
     public Ideapad()
@@ -202,6 +236,7 @@ class Ideapad : lenovo
     }
 }
 
+//membuat child class di dalam child class dengan parent class lenovo
 class Legion : lenovo
 {
     public Legion()
