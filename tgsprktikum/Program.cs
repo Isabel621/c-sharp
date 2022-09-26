@@ -6,7 +6,7 @@ class Program
 {
    static void Main(string[] args)
    {
-     //membuat variabel laptop1 dan laptop2 bertipe data Laptop
+     //membuat variabel laptop1 dan laptop2 
      Laptop laptop1 = new Vivobook();
      laptop1.vga = new nvidia();
      laptop1.processor = new corei5();
